@@ -55,6 +55,7 @@ class NoteListScreen extends StatelessWidget {
                   ),
                 ),
                 floatingActionButton: FloatingActionButton(
+                  backgroundColor: Color(0xFFFD5872),
 
                   onPressed:(){
                     goToNoteEditScreen(context);
@@ -77,6 +78,7 @@ class NoteListScreen extends StatelessWidget {
           color: headerColor,
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(75.0),
+
           ),
         ),
         height: 150,

@@ -58,7 +58,7 @@ class _NoteEditScreenState extends State {
       backgroundColor: white,
       appBar: AppBar(
         elevation: 0.7,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFFD5872),
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
           icon: Icon(Icons.arrow_back),
@@ -169,7 +169,7 @@ class _NoteEditScreenState extends State {
                 maxLines: null,
                 style: createContent,
                 decoration: InputDecoration(
-                  hintText: 'Enter Something...',
+                  hintText: 'Enter Description Here...',
                   border: InputBorder.none,
                 ),
               ),
@@ -178,6 +178,7 @@ class _NoteEditScreenState extends State {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xFFFD5872),
         onPressed: () {
           if (titleController.text.isEmpty)
             titleController.text = 'Untitled Note';

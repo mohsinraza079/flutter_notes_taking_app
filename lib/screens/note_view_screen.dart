@@ -97,6 +97,7 @@ class _note_view_screenState extends State<note_view_screen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xFFFD5872),
         onPressed: () {
           Navigator.pushNamed(context, NoteEditScreen.route,
               arguments: selectedNote.id);
