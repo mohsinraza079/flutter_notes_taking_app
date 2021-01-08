@@ -10,7 +10,12 @@ import 'package:flutter/gestures.dart';
 
 import 'note_edit_screen.dart';
 
-class NoteListScreen extends StatelessWidget {
+class NoteListScreen extends StatefulWidget {
+  @override
+  _NoteListScreenState createState() => _NoteListScreenState();
+}
+
+class _NoteListScreenState extends State<NoteListScreen> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -43,12 +48,24 @@ class NoteListScreen extends StatelessWidget {
                       {
                         final i = index - 1;
                         final item = noteprovider.items[i];
-                        return ListItem(
-                          id: item.id,
-                          title: item.title,
-                          content: item.content,
-                          imagePath: item.imagePath,
-                          date: item.date,
+                        return Dismissible(key: Key('$item'),
+                          onDismissed: (direction){
+                            setState(() {
+                              Provider.of<NoteProvider>(context, listen: false)
+                                  .deleteNote(item.id);
+                              // item.removeAt(i);
+                            });
+                            Scaffold.of(context)
+                                .showSnackBar(SnackBar(content: Text("Deleted Successfully ")));
+                          },
+                          background: Container(color:  Color(0xFFFD5872)),
+                          child: ListItem(
+                            id: item.id,
+                            title: item.title,
+                            content: item.content,
+                            imagePath: item.imagePath,
+                            date: item.date,
+                          ),
                         );
                       }
                     },
@@ -70,6 +87,7 @@ class NoteListScreen extends StatelessWidget {
 
     );
   }
+
   Widget header() {
     return GestureDetector(
       onTap: _launchUrl,
@@ -87,7 +105,7 @@ class NoteListScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Mohsin Raza\'S',
+              'MOHSIN RAZA\'S',
               style: headerRideStyle,
             ),
             Text(
@@ -99,6 +117,7 @@ class NoteListScreen extends StatelessWidget {
       ),
     );
   }
+
   _launchUrl() async {
     const url = 'https://www.androidride.com';
     if (await canLaunch(url)) {
@@ -107,6 +126,7 @@ class NoteListScreen extends StatelessWidget {
       throw 'Could not launch $url';
     }
   }
+
   Widget noNotesUI(BuildContext context) {
     return ListView(
       children: [
@@ -143,6 +163,7 @@ class NoteListScreen extends StatelessWidget {
       ],
     );
   }
+
   void goToNoteEditScreen(BuildContext context) {
     Navigator.of(context).pushNamed(NoteEditScreen.route);
   }

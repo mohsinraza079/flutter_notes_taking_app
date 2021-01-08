@@ -39,7 +39,9 @@ class _MyHomePageState extends State<MyHomePage> {
           SizedBox(
             height: 10,
           ),
-          CircularProgressIndicator()
+          CircularProgressIndicator(
+            backgroundColor: Color(0xFFFD5872),
+          )
         ],
       ),
     );

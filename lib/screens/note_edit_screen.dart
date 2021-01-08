@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_notes_taking_app/db_helper/note_provider.dart';
