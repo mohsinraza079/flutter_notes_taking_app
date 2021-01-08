@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
 class note_edit_screen extends StatefulWidget {
+  static const route='/note-edit';
   @override
   _note_edit_screenState createState() => _note_edit_screenState();
 }

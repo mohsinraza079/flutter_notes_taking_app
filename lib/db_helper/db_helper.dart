@@ -1,4 +1,3 @@
-
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 // ignore: camel_case_types
@@ -15,5 +14,14 @@ class db_helper {
   static Future<List<Map<String, dynamic>>> getNotesFromDB() async {
     final database = await db_helper.database();
     return database.query("notes", orderBy: "id DESC");
+  }
+  static Future delete(int id) async {
+    final database = await db_helper.database();
+    return database.delete('notes', where: 'id = ?', whereArgs: [id]);
+  }
+  static Future insert(Map<String, Object> data) async {
+    final database = await db_helper.database();
+    database.insert("notes", data,
+        conflictAlgorithm: ConflictAlgorithm.replace);
   }
 }

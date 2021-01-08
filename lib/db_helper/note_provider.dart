@@ -1,15 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_notes_taking_app/db_helper/db_helper.dart';
+import 'package:flutter_notes_taking_app/model/notes.dart';
 
-// ignore: camel_case_types
-class note_provider extends StatefulWidget {
-  @override
-  _note_providerState createState() => _note_providerState();
+class NoteProvider with ChangeNotifier{
+
+  List _items = [];
+  List get items {
+    return [..._items];
+  }
+  Future addOrUpdateNote(int id, String title, String content,
+      String imagePath, EditMode editMode) async {
+    final note = Note(id, title, content, imagePath);
+    if (EditMode.ADD == editMode) {
+      _items.insert(0, note);
+    } else {
+      _items[_items.indexWhere((note) => note.id == id)] = note;
+    }
+    notifyListeners();
+    db_helper.insert(
+      {
+        'id': note.id,
+        'title': note.title,
+        'content': note.content,
+        'imagePath': note.imagePath,
+      },
+    );
+  }
+
+
 }
 
-// ignore: camel_case_types
-class _note_providerState extends State<note_provider> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+enum EditMode {
+  ADD,
+  UPDATE,
 }
