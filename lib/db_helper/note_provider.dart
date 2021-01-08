@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_notes_taking_app/db_helper/db_helper.dart';
 import 'package:flutter_notes_taking_app/model/notes.dart';
+import 'package:flutter_notes_taking_app/utilities/constants.dart';
 
 class NoteProvider with ChangeNotifier{
 
@@ -48,7 +49,3 @@ class NoteProvider with ChangeNotifier{
 
 }
 
-enum EditMode {
-  ADD,
-  UPDATE,
-}

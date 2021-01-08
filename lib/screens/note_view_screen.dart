@@ -1,9 +1,16 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_notes_taking_app/db_helper/note_provider.dart';
 import 'package:flutter_notes_taking_app/model/notes.dart';
+
 import 'package:flutter_notes_taking_app/utilities/constants.dart';
 import 'package:flutter_notes_taking_app/widgets/delete_popup.dart';
-import 'Note_Edit_Screen.dart';
+import 'package:provider/provider.dart';
+
+import 'note_edit_screen.dart';
+
+
+
 
 // ignore: camel_case_types
 class note_view_screen extends StatefulWidget {
@@ -15,6 +22,15 @@ class note_view_screen extends StatefulWidget {
 // ignore: camel_case_types
 class _note_view_screenState extends State<note_view_screen> {
   Note selectedNote;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final id = ModalRoute.of(context).settings.arguments;
+    final provider = Provider.of<NoteProvider>(context);
+    if (provider.getNote(id) != null) {
+      selectedNote = provider.getNote(id);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +98,7 @@ class _note_view_screenState extends State<note_view_screen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, note_edit_screen.route,
+          Navigator.pushNamed(context, NoteEditScreen.route,
               arguments: selectedNote.id);
         },
         child: Icon(Icons.edit),
