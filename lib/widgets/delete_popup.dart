@@ -1,15 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_notes_taking_app/db_helper/note_provider.dart';
+import 'package:flutter_notes_taking_app/model/notes.dart';
+import 'package:provider/provider.dart';
 
-// ignore: camel_case_types
-class delete_popup extends StatefulWidget {
-  @override
-  _delete_popupState createState() => _delete_popupState();
-}
+class DeletePopUp extends StatelessWidget {
+  const DeletePopUp({
+    Key key,
+    @required this.selectedNote,
+  }) : super(key: key);
+  final Note selectedNote;
 
-// ignore: camel_case_types
-class _delete_popupState extends State<delete_popup> {
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+      title: Text('Delete?'),
+      content: Text('Do you want to delete the note?'),
+      actions: [
+        FlatButton(
+          child: Text('Yes'),
+          onPressed: () {
+            Provider.of<NoteProvider>(context, listen: false)
+                .deleteNote(selectedNote.id);
+            Navigator.popUntil(context, ModalRoute.withName('/'));
+          },
+        ),
+        FlatButton(
+          child: Text('No'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        )
+      ],
+    );
+
   }
+
 }
