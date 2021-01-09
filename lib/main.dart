@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_notes_taking_app/screens/note_list_screen.dart';
 import 'package:flutter_notes_taking_app/screens/note_view_screen.dart';
@@ -8,7 +9,9 @@ import 'package:provider/provider.dart';
 import 'db_helper/note_provider.dart';
 import 'screens/note_edit_screen.dart';
 
-void main() {
+void main() async  {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(SplashScreen());
 }
 class SplashScreen extends StatelessWidget {

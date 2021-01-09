@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_notes_taking_app/login.dart';
 import 'package:flutter_notes_taking_app/main.dart';
 
 
@@ -19,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
             () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => MaterialApp(
             title: 'Notes App',
-            home: MyApp(),
+            home: Login_Page(),
             theme: ThemeData(
                 primarySwatch: Colors.green)))));
   }
