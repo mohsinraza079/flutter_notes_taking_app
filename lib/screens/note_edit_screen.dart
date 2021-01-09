@@ -66,6 +66,29 @@ class _NoteEditScreenState extends State {
         ),
         actions: [
           IconButton(
+            icon: Icon(Icons.alarm),
+            color: Colors.black,
+            onPressed: () {
+              final DateTime now = DateTime.now();
+              showTimePicker(
+                context: context,
+                initialTime: TimeOfDay(hour: now.hour, minute: now.minute),
+              ).then((TimeOfDay value) {
+                if (value != null) {
+                  Scaffold.of(context)
+                      .showSnackBar(SnackBar(
+                      content: Text("Deleted Successfully ")));
+                  // Scaffold.of(context).showSnackBar(
+                  //   SnackBar(
+                  //     content: Text(value.format(context)),
+                  //     action: SnackBarAction(label: 'OK', onPressed: () {}),
+                  //   ),
+                  // );
+                }
+              });
+            },
+          ),
+          IconButton(
             icon: Icon(Icons.share),
             color: Colors.black,
             onPressed: share,
