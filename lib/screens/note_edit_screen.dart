@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:flutter_notes_taking_app/db_helper/note_provider.dart';
 import 'package:flutter_notes_taking_app/model/notes.dart';
 import 'package:flutter_notes_taking_app/screens/note_view_screen.dart';
@@ -141,7 +140,7 @@ class _NoteEditScreenState extends State {
                           width: 30.0,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.white,
+                            color: Color(0xFFFD5872),
                           ),
                           child: InkWell(
                             onTap: () {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_notes_taking_app/db_helper/note_provider.dart';
+import 'package:flutter_notes_taking_app/login.dart';
 import 'package:flutter_notes_taking_app/utilities/constants.dart';
 import 'package:flutter_notes_taking_app/widgets/list_items.dart';
 import 'package:provider/provider.dart';
@@ -75,7 +76,8 @@ class _NoteListScreenState extends State<NoteListScreen> {
                   backgroundColor: Color(0xFFFD5872),
 
                   onPressed:(){
-                    goToNoteEditScreen(context);
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => Login_Page()));
+                   // goToNoteEditScreen(context);
                   },
                   child: Icon(Icons.add),
                 ),

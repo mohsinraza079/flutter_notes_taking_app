@@ -37,7 +37,7 @@ class _note_view_screenState extends State<note_view_screen> {
       backgroundColor: white,
       appBar: AppBar(
         elevation: 0.7,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFFD5872),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
