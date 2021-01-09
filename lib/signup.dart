@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_notes_taking_app/screens/note_list_screen.dart';
 import 'Utilities/Constants.dart';
 import 'login.dart';
 
@@ -19,6 +18,7 @@ class _SignUp_PageState extends State<SignUp_Page> {
   final GlobalKey<FormState> _SignUPkey=GlobalKey<FormState>();
   // ignore: non_constant_identifier_names
   TextEditingController Semail_Controller;
+  // ignore: non_constant_identifier_names
   TextEditingController SnameController;
   // ignore: non_constant_identifier_names
   TextEditingController SpasswordController;
@@ -45,7 +45,7 @@ class _SignUp_PageState extends State<SignUp_Page> {
 
                 ),
               ),
-              height: 100,
+              height: 90,
               width: double.infinity,
 
               child: Column(
@@ -65,7 +65,7 @@ class _SignUp_PageState extends State<SignUp_Page> {
                   padding: EdgeInsets.all(10),
                   child: Column(
                     children: [
-                      SizedBox(height: 10,),
+                     // SizedBox(height: 5,),
                       Container(
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
@@ -136,7 +136,7 @@ class _SignUp_PageState extends State<SignUp_Page> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20,),
+                      SizedBox(height: 8,),
                       Row(
                         children: [
                           Expanded(
@@ -177,7 +177,7 @@ class _SignUp_PageState extends State<SignUp_Page> {
                                       );
                                     });
                                   }
-                                };
+                                }
                               },
                               child: Container(
                                 height: 50,
