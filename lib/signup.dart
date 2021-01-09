@@ -1,36 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_notes_taking_app/signup.dart';
-import 'package:flutter_notes_taking_app/utilities/constants.dart';
+import 'package:flutter_notes_taking_app/screens/note_list_screen.dart';
+import 'Utilities/Constants.dart';
 
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: Login_Page(),
-
-
-  )
-  );
-}
 // ignore: camel_case_types
-class Login_Page extends StatelessWidget {
+class SignUp_Page extends StatefulWidget {
+  @override
+  _SignUp_PageState createState() => _SignUp_PageState();
+}
+
+// ignore: camel_case_types
+class _SignUp_PageState extends State<SignUp_Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 36),
         child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               decoration:  BoxDecoration(
-               color: headerColor,
-               borderRadius: BorderRadius.only(
-               bottomRight: Radius.circular(75.0),
+                color: headerColor,
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(75.0),
 
-          ),
-        ),
+                ),
+              ),
               height: 100,
               width: double.infinity,
 
@@ -38,7 +33,7 @@ class Login_Page extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Login',
+                    'Signup',
                     style: headerNotesStyle,
                   ),
                 ],
@@ -51,7 +46,7 @@ class Login_Page extends StatelessWidget {
                   padding: EdgeInsets.all(10),
                   child: Column(
                     children: [
-                      SizedBox(height: 30,),
+                      SizedBox(height: 10,),
                       Container(
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
@@ -72,9 +67,10 @@ class Login_Page extends StatelessWidget {
                               ),
                               child: TextField(
                                 decoration: InputDecoration(
-                                    hintText: 'Enter Email',
-                                    hintStyle: TextStyle(color: Colors.grey),
-                                    border: InputBorder.none
+                                  hintText: ' Name',
+                                  hintStyle: TextStyle(color: Colors.grey),
+                                  border: InputBorder.none,
+
                                 ),
                               ),
 
@@ -86,7 +82,23 @@ class Login_Page extends StatelessWidget {
                               ),
                               child: TextField(
                                 decoration: InputDecoration(
-                                    hintText: 'Enter Password',
+                                  hintText: ' Email',
+                                  hintStyle: TextStyle(color: Colors.grey),
+                                  border: InputBorder.none,
+
+                                ),
+                                keyboardType: TextInputType.emailAddress,
+                              ),
+
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(00),
+                              decoration: BoxDecoration(
+                                  border: Border(bottom: BorderSide(color: Colors.grey[200]))
+                              ),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    hintText: ' Password',
                                     hintStyle: TextStyle(color: Colors.grey),
                                     border: InputBorder.none
                                 ),
@@ -95,18 +107,20 @@ class Login_Page extends StatelessWidget {
                           ],
                         ),
                       ),
-
-                      SizedBox(height: 30,),
+                      SizedBox(height: 20,),
                       Row(
                         children: [
                           Expanded(
                             child: FlatButton(
-                              onPressed: (){},
+                              onPressed: (){
+                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new NoteListScreen()));
+
+                              },
                               child: Container(
                                 height: 50,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
-                                  color: Colors.blue,
+                                  color: Color(0xFFFD5872),
                                 ),
                                 child: Center(
                                   child: Text("Login", style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
@@ -115,27 +129,6 @@ class Login_Page extends StatelessWidget {
                             ),
 
                           ),
-
-                          SizedBox(width: 30,),
-                          Expanded(
-                            child: FlatButton(
-                              onPressed: (){
-                                Navigator.push(context, new MaterialPageRoute(builder: (context) => SignUp_Page()));
-                              },
-                              child: Container(
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color:  Color(0xFFFD5872),
-                                ),
-                                child: Center(
-                                  child: Text("Signup", style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
-                                ),
-                              ),
-                            ),
-
-                          )
-
                         ],
                       )
                     ],
